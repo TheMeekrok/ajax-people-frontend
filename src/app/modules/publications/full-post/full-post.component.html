@@ -1,0 +1,32 @@
+<mat-card class="post-modal">
+  <mat-card-actions class="cross-button">
+    <div class="example-button-container" >
+      <button mat-mini-fab color="warn"
+              (click)="onCloseClick()">
+        &#10006;
+      </button>
+    </div>
+  </mat-card-actions>
+  <div class="post">
+    <mat-card-header>
+      <mat-card-subtitle>{{post.publicationTime | date:  "dd.MM.YYYY HH:mm"}}</mat-card-subtitle>
+      <mat-chip-listbox [selectable]="false">
+        <mat-chip *ngFor="let t of post.tags" [value]="t">
+          {{ t.title }}
+        </mat-chip>
+      </mat-chip-listbox>
+
+      <mat-card-title>{{ post.author }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ post.text }}</p>
+      <mat-divider></mat-divider>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button
+              color="primary">
+        Отозваться
+      </button>
+    </mat-card-actions>
+  </div>
+</mat-card>

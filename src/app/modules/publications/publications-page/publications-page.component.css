@@ -1,0 +1,24 @@
+mat-drawer-container mat-drawer {
+  box-shadow: none !important;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-drawer-container mat-drawer {
+  box-shadow: none !important;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 350px;
+  padding: 10px;
+}
+
+.content {
+  margin-left: 10px;
+  width: 70%;
+}

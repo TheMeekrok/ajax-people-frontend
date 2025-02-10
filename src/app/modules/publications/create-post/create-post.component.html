@@ -1,0 +1,50 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>✍️ Создание</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="form">
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>Текст</mat-label>
+        <textarea 
+          matInput 
+          cdkTextareaAutosize 
+          formControlName="text" 
+          maxlength="255"
+          class="overflow-y-scroll"
+        >
+        </textarea>
+        <mat-error>{{ getTextErrorString() }}</mat-error>
+      </mat-form-field>
+    
+      <mat-chip-listbox 
+        class="max-h-60 overflow-y-scroll" 
+        multiple="true" 
+        formControlName="tags"
+      >
+        <mat-chip-option *ngFor="let tag of tags" [value]="tag">
+          {{ tag.title }}
+        </mat-chip-option>
+      </mat-chip-listbox>
+    </form>
+
+    <div class="spinner" *ngIf="loading"><mat-spinner></mat-spinner></div>
+    <p *ngIf="!loading" class="mat-typography text-red-500 text-center text-xs m-0">
+      {{ tagsError || savePostError }}
+    </p>
+  </mat-card-content>
+
+  <mat-card-actions>
+      <button
+      class="btn-margin"
+      mat-raised-button
+      color="primary"
+      (click)="onPostClick()"
+      [disabled]="form.invalid"
+    >
+      Сохранить
+    </button>
+  </mat-card-actions>
+
+</mat-card>
